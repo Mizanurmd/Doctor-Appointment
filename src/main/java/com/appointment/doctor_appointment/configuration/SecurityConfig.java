@@ -31,17 +31,18 @@ public class SecurityConfig {
         this.ourUserDetailsService = ourUserDetailsService;
         this.jwtAuthFilter = jwtAuthFilter;
     }
+
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
-                .authorizeHttpRequests(request-> request.requestMatchers(
+                .authorizeHttpRequests(request -> request.requestMatchers(
                                 "/api/v1/auth/**").permitAll()
                         .requestMatchers("/api/v1/appointments/**").hasAnyAuthority("DOCTOR")
                         .requestMatchers("/api/v1/patient/**").hasAnyAuthority("PATIENT")
 //                        .requestMatchers("/api/v1/adminuser/**").hasAnyAuthority("ADMIN", "USER")
                         .anyRequest().authenticated())
-                .sessionManagement(manager->manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
                         jwtAuthFilter, UsernamePasswordAuthenticationFilter.class
                 );
