@@ -19,12 +19,12 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<ReqRest> regeister(@RequestBody ReqRest reg) {
-        return ResponseEntity.ok(ourUserService.RegisterUser(reg));
+        return ResponseEntity.ok(ourUserService.registerUser(reg));
     }
 
     @PostMapping("/login")
     public ResponseEntity<ReqRest> login(@RequestBody ReqRest login) {
-        return ResponseEntity.ok(ourUserService.LoginUser(login));
+        return ResponseEntity.ok(ourUserService.loginUser(login));
     }
 
     @PostMapping("/refresh")

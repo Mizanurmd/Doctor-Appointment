@@ -32,7 +32,7 @@ public class OurUserService {
     }
 
     //=================Register user ================//
-    public ReqRest RegisterUser(ReqRest req) {
+    public ReqRest registerUser(ReqRest req) {
         ReqRest resp= new ReqRest();
         try {
             OurUser ourUser = new OurUser();
@@ -55,7 +55,7 @@ public class OurUserService {
     }
 
     //======================== Login by Register user =====================//
-    public ReqRest LoginUser(ReqRest req) {
+    public ReqRest loginUser(ReqRest req) {
         ReqRest resp= new ReqRest();
       try {
           authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword()));
