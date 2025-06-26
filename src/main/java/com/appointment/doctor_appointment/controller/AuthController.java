@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final OurUserService ourUserService;
+
     @Autowired
     public AuthController(OurUserService ourUserService) {
         this.ourUserService = ourUserService;
@@ -30,6 +31,11 @@ public class AuthController {
     @PostMapping("/refresh")
     public ResponseEntity<ReqRest> refreshToken(@RequestBody ReqRest req) {
         return ResponseEntity.ok(ourUserService.refreshToken(req));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<ReqRest> logOut() {
+        return ResponseEntity.ok(ourUserService.logoutUser());
     }
 
 
