@@ -38,9 +38,11 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request.requestMatchers(
                                 "/api/v1/auth/**").permitAll()
-                        .requestMatchers("/api/v1/appointments/**").hasAnyAuthority("ADMIN")
-                        .requestMatchers("/api/v1/appointments/**").hasAnyAuthority("DOCTOR")
-                        .requestMatchers("/api/v1/patient/**").hasAnyAuthority("PATIENT")
+
+                        .requestMatchers("/api/v1/menus/**").authenticated()
+                        .requestMatchers("/api/v1/auth/**").hasAnyAuthority("ADMIN")
+                        .requestMatchers("/api/v1/appointments/**").hasAnyAuthority("ADMIN","USER")
+//                        .requestMatchers("/api/v1/patient/**").hasAnyAuthority("PATIENT")
 //                        .requestMatchers("/api/v1/adminuser/**").hasAnyAuthority("ADMIN", "USER")
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -1,6 +1,7 @@
 package com.appointment.doctor_appointment.dto;
 
-import com.appointment.doctor_appointment.enums.Role;
+
+import com.appointment.doctor_appointment.admin.Role;
 import com.appointment.doctor_appointment.model.OurUser;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
