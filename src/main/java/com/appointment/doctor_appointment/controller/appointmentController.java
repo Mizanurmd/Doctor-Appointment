@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/appointments")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class appointmentController {
     private final AppointmentService appointmentService;
 
